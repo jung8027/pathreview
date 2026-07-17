@@ -8,6 +8,9 @@ Architecture doc doesn't explain the hybrid retrieval scoring formula
 
 **Tier:** [x] Tier 1  [ ] Tier 2  [ ] Tier 3
 
+**Why this issue / tier fit:**
+I'm still getting oriented in the pathreview codebase, so I picked a Tier 1 issue on purpose rather than jumping into scoring or retrieval logic I don't fully understand yet. The scope is only limited to docs-only (`docs/ARCHITECTURE.md`). This does not require any editing of the project code base so it is low-risk to get wrong. This forces me to actually read and understand the hybrid retrieval scoring code well enough to explain it which is a good on-ramp before I try to modify that code directly in a later issue. The deliverable is to document the formula, default weights, and one worked example into ARCHITECTURE.md. This is a good match for my current comfort level with the codebase.
+
 **Problem summary:**
 The Issue
 The docs/ARCHITECTURE.md file mentions that the hybrid retrieval system blends vector and keyword scores, but it fails to explain how this blending actually works.
