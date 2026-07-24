@@ -30,12 +30,14 @@ docs/36-Architecture-doc-doesn't-explain-the-hybrid-retrieval-scoring-formula
 
 ## Week 8 — Reproduction & solution planning
 
-**Reproduction commit link:** [link to commit documenting the reproduced issue]
+**Reproduction commit link:**
+https://github.com/jung8027/pathreview/commit/2c559c2d159027682e053952af970d652e66e969
 
 **Reproduction summary:**
-[1–2 sentences: How did you reproduce the issue? What did you observe?]
+To reproduce the issue, I inspected the hybrid retrieval scoring implementation in rag/retriever/hybrid.py and compared it against docs/ARCHITECTURE.md. I observed that while docs/ARCHITECTURE.md describes hybrid retrieval as using vector similarity and BM25 keyword search, it lacks the specific blending formula (vector_weight * normalized_vector_score + keyword_weight * normalized_keyword_score), normalization details, and default weights (0.7 vector / 0.3 keyword). Additionally, I noted a runtime behavior bug where _get_all_chunks retrieves all chunks but fails to pass them to keyword_searcher.index() prior to searching, causing keyword scores to be empty unless indexed elsewhere.
 
-**PLAN.md link:** [link to PLAN.md in your fork]
+**PLAN.md link:**
+https://github.com/jung8027/pathreview/blob/docs/36-Architecture-doc-doesn't-explain-the-hybrid-retrieval-scoring-formula/PLAN.md
 
 **Walkthrough video (recommended):** [link to your Loom video, ≤2 min — recommended, not graded]
 
