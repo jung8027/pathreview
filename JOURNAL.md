@@ -79,13 +79,16 @@ Note for the fix: `_get_all_chunks` fetches every chunk in the collection but it
 ### Check-in 1 (mid-week)
 
 **Current progress:**
-[What have you implemented so far? Which sub-tasks from PLAN.md are done?]
+1. Nothing have been written into ARCHITECTURE.md yet.
+2. PLAN.md has been written and being reviewed.
 
 **Next steps:**
-[What are you working on for the rest of the week?]
+1. complete JOURNAL.md
+2. follow PLAN.md and write into ARCHITECTURE.md
 
 **Blockers:**
-[Anything slowing you down? Or leave blank.]
+1. Discovered a bug while reviewing the code.
+2. Asked for advice on how to proceed and report it.
 
 ---
 
@@ -93,14 +96,19 @@ Note for the fix: `_get_all_chunks` fetches every chunk in the collection but it
 
 **PR link:** [link to your submitted pull request]
 
-**Branch:** [the branch name you worked on, e.g. `fix/123-short-description`]
+**Branch:**
+docs/36-Architecture-doc-doesn't-explain-the-hybrid-retrieval-scoring-formula
 
 **What you built:**
-[1–3 sentences summarizing what your fix does and how it works]
+1. Analyzed the specific blending formula used
+2. Written down the information into the JOURNAL.md
+3. Compiled actionable steps in PLAN.md
+4. Finished by writing the missing information into ARCHITECTURE.md
 
 **Tests added or updated:**
-[Which test files did you touch? What do they cover?]
+This is a documentation issue so no tests will be written.
 
 **Self-review confirmation:** [ ] make check passes  [ ] make test-unit passes
 
-**Draft PR feedback received from:** [name or Slack handle, or "none"]
+**Draft PR feedback received from:**
+none
