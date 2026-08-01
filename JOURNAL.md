@@ -94,7 +94,8 @@ Note for the fix: `_get_all_chunks` fetches every chunk in the collection but it
 
 ### Check-in 2 (end of week)
 
-**PR link:** [link to your submitted pull request]
+**PR link:**
+https://github.com/ascherj/pathreview/pull/494
 
 **Branch:**
 docs/36-Architecture-doc-doesn't-explain-the-hybrid-retrieval-scoring-formula
