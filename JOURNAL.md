@@ -128,7 +128,11 @@ This is a documentation-only change (issue #36 scope), so no new automated tests
 2. Re-derived the worked example's three rows (both-matched, vector-only, keyword-only) by hand from the formula to confirm the blended scores in the doc's table (1.00 / 0.47 / 0.15) are arithmetically correct.
 3. Ran `make check` and `make test-unit` to confirm this branch introduces no new failures beyond what already exists on `main` (see Self-review confirmation below).
 
-**Self-review confirmation:** [ ] make check passes  [ ] make test-unit passes
+**Self-review confirmation:**
+Ran `make check` and `make test-unit` locally before opening the PR. Both fail, but only on pre-existing, unrelated issues — neither failure touches `docs/ARCHITECTURE.md` or anything else this branch changed:
+- `make check`: [ ] fails at the `lint` step — 182 pre-existing `ruff` errors (e.g., `F841` unused-variable warnings in `tests/unit/test_tech_detector.py`). Reproducible on `main` before this branch's commits, so unrelated to this change.
+- `make test-unit`: [ ] fails with 53 pre-existing failures (375 passing) in files unrelated to this change (`test_review_service.py`, `test_resume_parser.py`, `test_pii_scrubber.py`, etc.). None are in `docs/` or reference the hybrid retriever.
+- This branch's diff is limited to `docs/ARCHITECTURE.md`, `JOURNAL.md`, and `PLAN.md` — no Python source changed, so it cannot have caused any of the above failures.
 
 **Draft PR feedback received from:**
 none
