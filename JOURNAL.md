@@ -123,7 +123,10 @@ docs/36-Architecture-doc-doesn't-explain-the-hybrid-retrieval-scoring-formula
 *Notes for Reviewers:* The "Known limitation" callout about `keyword_searcher.index()` never being called on `_get_all_chunks` output is informational only; happy to split it into a separate follow-up issue if preferred. No production code was changed.
 
 **Tests added or updated:**
-This is a documentation issue so no tests will be written.
+This is a documentation-only change (issue #36 scope), so no new automated tests were added. The equivalent verification performed:
+1. Re-read `docs/ARCHITECTURE.md`'s new "Hybrid Retrieval Scoring" subsection line-by-line against the live source it describes, confirming each claim against a specific reference: the blend formula against `HybridRetriever.retrieve` ([hybrid.py:78-81](rag/retriever/hybrid.py#L78-L81)), the normalization step against [hybrid.py:58-59](rag/retriever/hybrid.py#L58-L59), the default weights against [hybrid.py:13-14](rag/retriever/hybrid.py#L13-L14), and the `min_score` filtering behavior against [hybrid.py:29](rag/retriever/hybrid.py#L29).
+2. Re-derived the worked example's three rows (both-matched, vector-only, keyword-only) by hand from the formula to confirm the blended scores in the doc's table (1.00 / 0.47 / 0.15) are arithmetically correct.
+3. Ran `make check` and `make test-unit` to confirm this branch introduces no new failures beyond what already exists on `main` (see Self-review confirmation below).
 
 **Self-review confirmation:** [ ] make check passes  [ ] make test-unit passes
 
