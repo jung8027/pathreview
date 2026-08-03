@@ -106,6 +106,22 @@ docs/36-Architecture-doc-doesn't-explain-the-hybrid-retrieval-scoring-formula
 3. Compiled actionable steps in PLAN.md
 4. Finished by writing the missing information into ARCHITECTURE.md
 
+**PR description (mirrors the template filled out on GitHub):**
+
+*Summary:* Documents the hybrid retrieval scoring formula in `docs/ARCHITECTURE.md` — the blend formula, score normalization, default weights, and a worked example — so the scoring behavior of `HybridRetriever` is fully reproducible from the docs alone, without reading `rag/retriever/hybrid.py`.
+
+*Issue:* Closes #36 — `docs/ARCHITECTURE.md` mentioned that hybrid retrieval blends vector and keyword scores but never explained how the blending works.
+
+*Changes:*
+- Added a new "Hybrid Retrieval Scoring" subsection under RAG System in `docs/ARCHITECTURE.md`
+- Documented the blend formula: `blended_score = vector_weight * normalized_vector_score + keyword_weight * normalized_keyword_score`
+- Documented score normalization (divide by the max score in each result set) and the zero-score fallback for chunks matched by only one search method
+- Documented the default weights (`vector_weight=0.7`, `keyword_weight=0.3`) and what they mean for ranking behavior
+- Added a worked example with three candidate chunks (matched by both, vector-only, keyword-only) showing normalized and blended scores
+- Noted the `min_score` filtering interaction, and flagged the `_get_all_chunks`/`keyword_searcher.index()` runtime bug found during reproduction as a known limitation, out of scope for this docs fix
+
+*Notes for Reviewers:* The "Known limitation" callout about `keyword_searcher.index()` never being called on `_get_all_chunks` output is informational only; happy to split it into a separate follow-up issue if preferred. No production code was changed.
+
 **Tests added or updated:**
 This is a documentation issue so no tests will be written.
 
